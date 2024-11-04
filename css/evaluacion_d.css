@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Encabezado */
+.header {
+    background: linear-gradient(to right, #3931af, #00c6ff);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+
+.header a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1; /* Hace que el contenedor ocupe el espacio restante */
+}
+
+
+/* Tarjeta */
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+/* Botón primario */
+.btn-primary {
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
+
+/* Pie de página */
+.footer {
+    background: linear-gradient(to right, #3931af, #00c6ff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer a {
+    color: #e4d6d6;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

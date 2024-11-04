@@ -14,7 +14,6 @@ $con=mysqli_connect("localhost","root","","myhmsdb");
   $contact = $_SESSION['contact'];
 
 
-
 if(isset($_POST['app-submit']))
 {
   $pid = $_SESSION['pid'];
@@ -86,9 +85,9 @@ function generate_bill(){
   $query=mysqli_query($con,"select p.pid,p.ID,p.fname,p.lname,p.doctor,p.appdate,p.apptime,p.disease,p.allergy,p.prescription,a.docFees from prestb p inner join appointmenttb a on p.ID=a.ID and p.pid = '$pid' and p.ID = '".$_GET['ID']."'");
   while($row = mysqli_fetch_array($query)){
     $output .= '
-    <label> Patient ID : </label>'.$row["pid"].'<br/><br/>
+    <label> paciente ID : </label>'.$row["pid"].'<br/><br/>
     <label> Appointment ID : </label>'.$row["ID"].'<br/><br/>
-    <label> Patient Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
+    <label> paciente Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
     <label> Doctor Name : </label>'.$row["doctor"].'<br/><br/>
     <label> Appointment Date : </label>'.$row["appdate"].'<br/><br/>
     <label> Appointment Time : </label>'.$row["apptime"].'<br/><br/>
@@ -126,7 +125,7 @@ if(isset($_GET["generate_bill"])){
 
   $content .= '
       <br/>
-      <h2 align ="center"> Global Hospitals</h2></br>
+      <h2 align ="center"> CLINICA CM</h2></br>
       <h3 align ="center"> Bill</h3>
       
 
@@ -153,24 +152,16 @@ function get_specs(){
 ?>
 <html lang="en">
   <head>
-
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- Bootstrap CSS -->
-    
-        <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
-
-    
-  
-    
-    
-
-
+    <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -178,11 +169,72 @@ function get_specs(){
     
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital </a>
+  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>CLINICA CM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 300;
+        color: #666;
+        background-color: #f0f2f5;
+        font-size: 16px;
+        line-height: 1.6em;
+    }
+    
+    .navbar-custom {
+        background: linear-gradient(to right, #3931af, #00c6ff);
+        color: white;
+        padding: 15px;
+        box-shadow: 0 0 3px rgba(0,0,0,0.12);
+    }
+    
+    .navbar-custom a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        margin: 0 15px;
+    }
+    
+    .footer {
+        padding: 5px 0; /* Ajuste de padding para reducir el espacio */
+        background: linear-gradient(to right, #3931af, #00c6ff);
+        color: white;
+        text-align: center;
+        margin: 0; /* Asegura que no haya margen superior ni inferior */
+        width: 100%;
+    }
+    
+    .footer a {
+        color: #e4d6d6;
+        text-decoration: none;
+        font-size: 0.9em;
+        margin: 0;
+        padding: 0; /* Elimina cualquier padding en los elementos internos */
+    }
+    
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    
+    .sidebar {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        flex: 1;
+    }
+</style>
   <style >
     .bg-primary {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
@@ -222,16 +274,19 @@ function get_specs(){
   <body style="padding-top:50px;">
   
    <div class="container-fluid" style="margin-top:50px;">
-    <h3 style = "margin-left: 40%;  padding-bottom: 20px; font-family: 'IBM Plex Sans', sans-serif;"> Welcome &nbsp<?php echo $username ?> 
+    <h3 style = "margin-left: 40%;  padding-bottom: 20px; font-family: 'IBM Plex Sans', sans-serif;"> Bienvenido&nbsp<?php echo $username ?> 
    </h3>
     <div class="row">
   <div class="col-md-4" style="max-width:25%; margin-top: 3%">
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-dash-list" data-toggle="list" href="#list-dash" role="tab" aria-controls="home">Dashboard</a>
-      <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
-      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
-      
+      <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Reservar cita</a>
+      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Historial de citas</a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Recetas</a>
+      <a href="evaluacion.php" class="list-group-item list-group-item-action">Llenar Evaluación</a>
+      <a href="gestion_estres.php" class="list-group-item list-group-item-action">Gestión del Estrés</a>
+      <a href="recetas_comidas.php" class="list-group-item list-group-item-action">Recetas de Comidas</a>
+      <a href="objetivos.php" class="list-group-item list-group-item-action">Objetivos Logrados</a>
     </div><br>
   </div>
   <div class="col-md-8" style="margin-top: 3%;">
@@ -245,7 +300,7 @@ function get_specs(){
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body">
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;"> Book My Appointment</h4>
+                      <h4 class="StepTitle" style="margin-top: 5%;">reservar mi cita</h4>
                       <script>
                         function clickDiv(id) {
                           document.querySelector(id).click();
@@ -253,7 +308,7 @@ function get_specs(){
                       </script>                      
                       <p class="links cl-effect-1">
                         <a href="#list-home" onclick="clickDiv('#list-home-list')">
-                          Book Appointment
+                        Reservar cita
                         </a>
                       </p>
                     </div>
@@ -264,11 +319,11 @@ function get_specs(){
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body" >
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">My Appointments</h2>
+                      <h4 class="StepTitle" style="margin-top: 5%;">Mis citas</h2>
                     
                       <p class="cl-effect-1">
                         <a href="#app-hist" onclick="clickDiv('#list-pat-list')">
-                          View Appointment History
+                        Ver historial de citas
                         </a>
                       </p>
                     </div>
@@ -280,11 +335,11 @@ function get_specs(){
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body" >
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
-                      <h4 class="StepTitle" style="margin-top: 5%;">Prescriptions</h2>
+                      <h4 class="StepTitle" style="margin-top: 5%;">Recetas</h2>
                     
                       <p class="cl-effect-1">
                         <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
-                          View Prescription List
+                        Ver lista de recetas
                         </a>
                       </p>
                     </div>
@@ -303,7 +358,7 @@ function get_specs(){
         <div class="container-fluid">
           <div class="card">
             <div class="card-body">
-              <center><h4>Create an appointment</h4></center><br>
+              <center><h4>Crear una cita</h4></center><br>
               <form class="form-group" method="post" action="admin-panel.php">
                 <div class="row">
                   
@@ -322,11 +377,11 @@ function get_specs(){
         
 
                     <div class="col-md-4">
-                          <label for="spec">Specialization:</label>
+                          <label for="spec">Especialización:</label>
                         </div>
                         <div class="col-md-8">
                           <select name="spec" class="form-control" id="spec">
-                              <option value="" disabled selected>Select Specialization</option>
+                              <option value="" disabled selected>Seleccciona Especialización</option>
                               <?php 
                               display_specs();
                               ?>
@@ -351,10 +406,10 @@ function get_specs(){
 
                   </script>
 
-              <div class="col-md-4"><label for="doctor">Doctors:</label></div>
+              <div class="col-md-4"><label for="doctor">Doctor:</label></div>
                 <div class="col-md-8">
                     <select name="doctor" class="form-control" id="doctor" required="required">
-                      <option value="" disabled selected>Select Doctor</option>
+                      <option value="" disabled selected>Seleccionar Doctor</option>
                 
                       <?php display_docs(); ?>
                     </select>
@@ -414,21 +469,21 @@ function get_specs(){
 
                   
                   <div class="col-md-4"><label for="consultancyfees">
-                                Consultancy Fees
+                              Honorarios de consultoría
                               </label></div>
                               <div class="col-md-8">
                               <!-- <div id="docFees">Select a doctor</div> -->
                               <input class="form-control" type="text" name="docFees" id="docFees" readonly="readonly"/>
                   </div><br><br>
 
-                  <div class="col-md-4"><label>Appointment Date</label></div>
+                  <div class="col-md-4"><label>Fecha de cita</label></div>
                   <div class="col-md-8"><input type="date" class="form-control datepicker" name="appdate"></div><br><br>
 
-                  <div class="col-md-4"><label>Appointment Time</label></div>
+                  <div class="col-md-4"><label>Hora de la cita</label></div>
                   <div class="col-md-8">
                     <!-- <input type="time" class="form-control" name="apptime"> -->
                     <select name="apptime" class="form-control" id="apptime" required="required">
-                      <option value="" disabled selected>Select Time</option>
+                      <option value="" disabled selected>Selecciona Tiempo</option>
                       <option value="08:00:00">8:00 AM</option>
                       <option value="10:00:00">10:00 AM</option>
                       <option value="12:00:00">12:00 PM</option>
@@ -455,12 +510,12 @@ function get_specs(){
                 <thead>
                   <tr>
                     
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Consultancy Fees</th>
-                    <th scope="col">Appointment Date</th>
-                    <th scope="col">Appointment Time</th>
-                    <th scope="col">Current Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Nombre del Doctor</th>
+                    <th scope="col">Honorarios de consultoría</th>
+                    <th scope="col">Fecha de cita</th>
+                    <th scope="col">Hora de la cita</th>
+                    <th scope="col">Estado actual</th>
+                    <th scope="col">Acción</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -529,14 +584,14 @@ function get_specs(){
                 <thead>
                   <tr>
                     
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Appointment ID</th>
-                    <th scope="col">Appointment Date</th>
-                    <th scope="col">Appointment Time</th>
-                    <th scope="col">Diseases</th>
-                    <th scope="col">Allergies</th>
-                    <th scope="col">Prescriptions</th>
-                    <th scope="col">Bill Payment</th>
+                    <th scope="col">Nombre del Doctor</th>
+                    <th scope="col">ID de cita</th>
+                    <th scope="col">Fecha de cita</th>
+                    <th scope="col">Hora de la cita</th>
+                    <th scope="col">Enfermedades</th>
+                    <th scope="col">alergias</th>
+                    <th scope="col">Recetas</th>
+                    <th scope="col">Pago de facturas</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -585,14 +640,10 @@ function get_specs(){
               </table>
         <br>
       </div>
-
-
-
-
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <form class="form-group" method="post" action="func.php">
-          <label>Doctors name: </label>
+          <label>Nombre del Doctor: </label>
           <input type="text" name="name" placeholder="Enter doctors name" class="form-control">
           <br>
           <input type="submit" name="doc_sub" value="Add Doctor" class="btn btn-primary">
@@ -603,6 +654,15 @@ function get_specs(){
   </div>
 </div>
    </div>
+   <!-- Pie de Página -->
+   <div class="footer">
+        <p>&copy; 2024 CLINICA CM - Todos los derechos reservados</p>
+        <a href="https://wa.me/50254184347" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp|
+            <a href="mailto:med12beagonzales@gmail.com.com">
+            <i class="fas fa-envelope"></i> Correo electrónico
+    </div>
+   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

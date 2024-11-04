@@ -2,8 +2,8 @@
  <?php #include("func.php");?>
 <html>
 <head>
-	<title>Patient Details</title>
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+	<title>paciente Details</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 </head>
