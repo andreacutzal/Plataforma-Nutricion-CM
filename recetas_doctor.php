@@ -66,7 +66,7 @@ if (isset($_POST['enviar'])) {
 <!-- Encabezado -->
 <div class="header d-flex justify-content-between align-items-center p-3">
     <div class="d-flex align-items-center">
-    <a></i>CLINICA CM</a>
+        <a></i>CLINICA CM</a>
         <a href="doctor-panel.php" class="btn btn-link text-white">← Regresar al Panel Principal</a>
     </div>
     <a href="logout.php" class="btn btn-link text-white">Logout</a>
@@ -97,7 +97,12 @@ if (isset($_POST['enviar'])) {
         </select>
         <textarea name="ingredientes" class="form-control mb-2" placeholder="Ingredientes" required></textarea>
         <textarea name="instrucciones" class="form-control mb-2" placeholder="Instrucciones" required></textarea>
-        <input type="file" name="multimedia" class="form-control mb-2">
+        
+        <!-- Carga de imagen y previsualización -->
+        <input type="file" name="multimedia" class="form-control mb-2" accept="image/*" onchange="previewImage(event)">
+        <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="display:none; width:100%; max-width:200px; margin-top: 10px;">
+        <button type="button" class="btn btn-danger btn-sm mt-2" onclick="clearImage()">Eliminar Imagen</button>
+        
         <input type="text" name="enlace_externo" class="form-control mb-2" placeholder="Enlace Externo (opcional)">
 
         <h4 class="mt-4">Asignar Plan Alimenticio</h4>
@@ -113,12 +118,35 @@ if (isset($_POST['enviar'])) {
     <p>&copy; 2024 CLINICA CM - Todos los derechos reservados</p>
     <a href="https://wa.me/50254184347" target="_blank">
             <i class="fab fa-whatsapp"></i> WhatsApp|
-            <a href="mailto:med12beagonzales@gmail.com.com">
+            <a href="mailto:med12beagonzales@gmail.com">
             <i class="fas fa-envelope"></i> Correo electrónico
+    </a>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Script para previsualizar y eliminar imagen -->
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function clearImage() {
+        const inputFile = document.querySelector("input[name='multimedia']");
+        const imagePreview = document.getElementById('imagePreview');
+        inputFile.value = "";  // Limpia el input file
+        imagePreview.src = "";  // Borra la imagen de previsualización
+        imagePreview.style.display = "none";  // Oculta el preview
+    }
+</script>
+
 </body>
 </html>

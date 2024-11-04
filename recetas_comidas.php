@@ -34,7 +34,7 @@ $result = $stmt->get_result();
 <!-- Encabezado -->
 <div class="header d-flex justify-content-between align-items-center p-3">
     <div class="d-flex align-items-center">
-    <a></i>CLINICA CM</a>
+        <a></i>CLINICA CM</a>
         <a href="admin-panel.php" class="btn btn-link text-white">← Regresar al Panel Principal</a>
     </div>
     <a href="logout.php" class="btn btn-link text-white">Logout</a>
@@ -52,7 +52,10 @@ $result = $stmt->get_result();
                     <p><strong>Instrucciones:</strong> <?= nl2br(htmlspecialchars($row['instrucciones'])) ?></p>
 
                     <?php if (!empty($row['multimedia'])): ?>
-                        <a href="<?= htmlspecialchars($row['multimedia']) ?>" target="_blank" class="btn btn-info btn-sm mt-2">Ver Multimedia</a>
+                        <div class="mt-2">
+                            <p><strong>Imagen:</strong></p>
+                            <img src="<?= htmlspecialchars($row['multimedia']) ?>" alt="Imagen de la receta" style="width:100%; max-width:200px;">
+                        </div>
                     <?php endif; ?>
 
                     <a href="descargar_pdf.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm mt-2">Descargar en PDF</a>
@@ -68,9 +71,11 @@ $result = $stmt->get_result();
 <footer class="footer mt-5 py-3 text-white text-center">
     <p>&copy; 2024 CLINICA CM - Todos los derechos reservados</p>
     <a href="https://wa.me/50254184347" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp|
-            <a href="mailto:med12beagonzales@gmail.com.com">
-            <i class="fas fa-envelope"></i> Correo electrónico
+        <i class="fab fa-whatsapp"></i> WhatsApp |
+    </a>
+    <a href="mailto:med12beagonzales@gmail.com">
+        <i class="fas fa-envelope"></i> Correo electrónico
+    </a>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
